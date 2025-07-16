@@ -5,10 +5,32 @@ step "run-a-script" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.RunOnServer = "true"
-            Octopus.Action.Script.ScriptBody = "1"
+            Octopus.Action.Script.ScriptBody = "12"
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
             OctopusUseBundledTooling = "False"
+        }
+
+        packages "Empty" {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "Empty"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
+
+        packages "Environment-Prod" {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "Environment-Prod"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
         }
     }
 }
