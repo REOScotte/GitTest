@@ -35,5 +35,16 @@ step "run-a-script" {
                 SelectionMode = "immediate"
             }
         }
+
+        packages "GitTest" {
+            acquisition_location = "Server"
+            feed = "reoscotte"
+            package_id = "REOScotte/GitTest"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
     }
 }
