@@ -60,7 +60,7 @@ step "run-another-script" {
         properties = {
             Octopus.Action.GitRepository.Source = "Project"
             Octopus.Action.RunOnServer = "false"
-            Octopus.Action.Script.ScriptFileName = "hostname.pl1"
+            Octopus.Action.Script.ScriptFileName = "hostname.ps1"
             Octopus.Action.Script.ScriptSource = "GitRepository"
             OctopusUseBundledTooling = "False"
         }
