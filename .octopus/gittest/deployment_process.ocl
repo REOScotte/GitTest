@@ -73,3 +73,31 @@ step "run-another-script" {
         }
     }
 }
+
+step "environment" {
+    name = "Environment"
+    properties = {
+        Octopus.Action.TargetRoles = "Default"
+    }
+
+    action {
+        action_type = "Octopus.TentaclePackage"
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.CustomDirectory"
+            Octopus.Action.Package.CustomInstallationDirectory = "C:\\Environment"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "Environment-#{Octopus.Environment.Name}"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "Environment-#{Octopus.Environment.Name}"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
