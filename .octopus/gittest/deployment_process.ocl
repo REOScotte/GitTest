@@ -58,13 +58,19 @@ step "run-another-script" {
     action {
         action_type = "Octopus.Script"
         properties = {
-            Octopus.Action.GitRepository.Source = "Project"
+            Octopus.Action.GitRepository.Source = "External"
             Octopus.Action.RunOnServer = "false"
-            Octopus.Action.Script.ScriptFileName = "Invoke-RemoteTemplate.ps1"
+            Octopus.Action.Script.ScriptFileName = "hostname.ps1"
             Octopus.Action.Script.ScriptSource = "GitRepository"
             OctopusUseBundledTooling = "False"
         }
         worker_pool_variable = ""
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_type = "Anonymous"
+            repository_uri = "https://github.com/REOScotte/GitTest.git"
+        }
     }
 }
 
