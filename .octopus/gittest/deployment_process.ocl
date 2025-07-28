@@ -1,10 +1,10 @@
 step "run-a-script" {
-    name = "Run a Script"
+    name = "joe"
     properties = {
         Octopus.Action.TargetRoles = "Default"
     }
 
-    action {
+    action "run-a-script" {
         action_type = "Octopus.Script"
         name = "joe"
         properties = {
@@ -48,16 +48,10 @@ step "run-a-script" {
             }
         }
     }
-}
 
-step "run-another-script" {
-    name = "Run another Script"
-    properties = {
-        Octopus.Action.TargetRoles = "Default"
-    }
-
-    action {
+    action "run-another-script" {
         action_type = "Octopus.Script"
+        name = "Run another Script"
         properties = {
             Octopus.Action.GitRepository.Source = "External"
             Octopus.Action.RunOnServer = "false"
