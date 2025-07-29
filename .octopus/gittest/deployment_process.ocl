@@ -1,12 +1,12 @@
 step "run-a-script" {
-    name = "main"
+    name = "joe"
     properties = {
         Octopus.Action.TargetRoles = "Default"
     }
 
     action "run-a-script" {
         action_type = "Octopus.Script"
-        name = "joe"
+        name = "bobo"
         properties = {
             Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = "123"
