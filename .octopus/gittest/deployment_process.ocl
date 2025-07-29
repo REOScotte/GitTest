@@ -6,7 +6,7 @@ step "run-a-script" {
 
     action "run-a-script" {
         action_type = "Octopus.Script"
-        name = "joe"
+        name = "bobo"
         properties = {
             Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = "123"
