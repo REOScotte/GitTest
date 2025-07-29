@@ -1,15 +1,15 @@
 step "run-a-script" {
-    name = "joe"
+    name = "Run a Script"
     properties = {
         Octopus.Action.TargetRoles = "Default"
     }
 
-    action "run-a-script" {
+    action {
         action_type = "Octopus.Script"
-        name = "bobo"
+        name = "main"
         properties = {
             Octopus.Action.RunOnServer = "false"
-            Octopus.Action.Script.ScriptBody = "123"
+            Octopus.Action.Script.ScriptBody = "12"
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
             OctopusUseBundledTooling = "False"
@@ -33,64 +33,6 @@ step "run-a-script" {
             properties = {
                 Extract = "True"
                 Purpose = ""
-                SelectionMode = "immediate"
-            }
-        }
-
-        packages "GitTest" {
-            acquisition_location = "Server"
-            feed = "reoscotte"
-            package_id = "REOScotte/GitTest"
-            properties = {
-                Extract = "True"
-                Purpose = ""
-                SelectionMode = "immediate"
-            }
-        }
-    }
-
-    action "run-another-script" {
-        action_type = "Octopus.Script"
-        name = "Run another Script"
-        properties = {
-            Octopus.Action.GitRepository.Source = "External"
-            Octopus.Action.RunOnServer = "false"
-            Octopus.Action.Script.ScriptFileName = "hostname.ps1"
-            Octopus.Action.Script.ScriptSource = "GitRepository"
-            OctopusUseBundledTooling = "False"
-        }
-        worker_pool_variable = ""
-
-        git_dependencies {
-            default_branch = "main"
-            git_credential_type = "Anonymous"
-            repository_uri = "https://github.com/REOScotte/GitTest.git"
-        }
-    }
-}
-
-step "environment" {
-    name = "Environment"
-    properties = {
-        Octopus.Action.TargetRoles = "Default"
-    }
-
-    action {
-        action_type = "Octopus.TentaclePackage"
-        properties = {
-            Octopus.Action.EnabledFeatures = "Octopus.Features.CustomDirectory"
-            Octopus.Action.Package.CustomInstallationDirectory = "C:\\Environment"
-            Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "octopus-server-built-in"
-            Octopus.Action.Package.PackageId = "Environment-#{Octopus.Environment.Name}"
-        }
-        worker_pool_variable = ""
-
-        packages {
-            acquisition_location = "Server"
-            feed = "octopus-server-built-in"
-            package_id = "Environment-#{Octopus.Environment.Name}"
-            properties = {
                 SelectionMode = "immediate"
             }
         }
